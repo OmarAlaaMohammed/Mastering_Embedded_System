@@ -1,30 +1,36 @@
 
 #include <stdio.h>
 
+void swapStrings(char*, char*);
+
 int main()
 {
-	int n, c, k;
-	printf("Enter an integer in decimal number system\n");
-	fflush(stdin);fflush(stdout);
-	scanf("%d", &n);
+	char x[50];
+	char y[50];
 	
-	printf("%d in binary number system is:\n", n);
+	printf("Enter the first string:");
+	scanf("%s", x);
+	printf("Enter the second string:");
+	scanf("%s", y);
+
+
+	swapStrings(x,y);
+
+	printf("string x = %s\n",x);
+	printf("string y = %s",y);
 	
-	for (c = 31; c >= 0; c--)
-	{
-		k = n >> c;
-		
-		if (k & 1)
-			printf("1");
-		else
-			printf("0");
+}
+
+
+
+void swapStrings(char* x, char* y){
+
+	for(int i = 0;(y[i] != '\0') || (x[i] != '\0'); i++){
+		int temp;
+		temp = x[i];
+		x[i] = y[i];
+		y[i] = temp;
+
 	}
-	
-	printf("\n");
-	k=n>>3;
-	if(k&1)
-	printf(" 4th least significant bit is 1");
-	else
-	printf("4th least significant bit is 0");
-	return 0;
+
 }

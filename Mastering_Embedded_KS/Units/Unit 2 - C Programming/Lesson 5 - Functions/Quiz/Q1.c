@@ -1,21 +1,39 @@
 #include <stdio.h>
 
-int clearBit(int,int);
+int compareUsernames(char*, char*);
 
 int main(){
-	int num,n;
 
-	printf("Enter a number :");
-	scanf("%d",&num);
-	printf("Enter the number of bit to be cleared : ");
-	scanf("%d",&n);
-	num = clearBit(num,n);
-	printf("result = %d",num);
+	char correctUsername[] = "USERNAME";
+	char inputUsername[50];
+
+	printf("Enter username: ");
+	scanf("%s",inputUsername);
+
+	if(compareUsernames(inputUsername, correctUsername)){
+		printf("Correct Username!\n");
+	}
+	else{
+		printf("Incorret Username!\n");
+	}
 
 }
 
- 
-int clearBit(int num,int n){
-	num &= ~(1<<n);
-	return num;
-}
+
+int compareUsernames(char inputUsername[], char correctUsername[]){
+
+
+	while(*inputUsername != '\0' && *correctUsername != '\0'){
+		if(*inputUsername != *correctUsername){
+			return 0;
+		}
+
+		inputUsername++;
+		correctUsername++;
+
+	}
+
+	//Check if both strings reached to the null at the same time to consider the (black spaces) " " in both strings
+
+	return (*inputUsername == '\0' && *correctUsername == '\0'); 
+} 
